@@ -6,7 +6,6 @@ from src.common import utils
 import requests
 import time
 
-
 class Spider(object):
     #     classs to catch weibo news
 
@@ -30,6 +29,7 @@ class Spider(object):
         self.cookies.update(response.cookies)
         return response.text
 
+
 if __name__ == "__main__":
     print("Test Start")
     # user_name = Config.getUserName()
@@ -38,13 +38,12 @@ if __name__ == "__main__":
     spider = Spider()
     url1 = spider.get_page_url(base_url, 1)
     url2 = spider.get_page_url(base_url, 2)
-    url3 = spider.get_page_url(base_url, 3)
     headers = Config.get_header()
     time.sleep(utils.get_random_second(1, 3))
     print("url  -->  ", url1)
     res1 = spider.get_page_content(url1, None, headers)
     time.sleep(utils.get_random_second(1, 3))
-    print("url  -->  ", url1)
+    print("url  -->  ", url2)
     res2 = spider.get_page_content(url2, None, headers)
     print(res1)
     print("********************")

@@ -5,7 +5,10 @@ import random
 username = "1666188122@qq.com"
 password = "mzg...8535933570"
 url_group = \
-    ["https://weibo.com/yangshiwangnet?is_search=0&visible=0&is_all=1&is_tag=0&profile_ftype=1&page=${page_num}#feedtop"]
+    [
+        "https://weibo.com/yangshiwangnet?is_search=0&visible=0&is_all=1&is_tag=0&profile_ftype=1&page=${page_num}",
+        "https://weibo.cn/yangshiwangnet?page=${page_num}"
+     ]
 
 '''
 USER_AGENTS 随机头信息
