@@ -29,14 +29,11 @@ class WeiBoPhoneLogin(object):
             "hff": "",
             "hfp": ""
         }
-        cookie={
-            "login":"2539a3746215f32d05c8100e941e1569"
-        }
         res = requests.post(login_url, data, headers=headers)
         print(res.text)
-        print(res)
+        return res.cookies
 
 if __name__ == "__main__":
     weibop = WeiBoPhoneLogin()
-    weibop.login()
+    cookies = weibop.login()
 
