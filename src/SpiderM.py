@@ -45,10 +45,14 @@ if __name__ == "__main__":
     print("********************")
     soup = BeautifulSoup(res2, "lxml")
     newsList = soup.find_all(id=True, class_='c')
-    print(newsList)
-    for item in newsList:
-        print(newsList.index(item))
-        print(item)
+    item = newsList[1]
+    div_one = item.find_all('div')
+    contentHtml = div_one[0]
+    numHtml = div_one[1]
+    print(contentHtml)
+    print(numHtml)
+
+
 
 
 
