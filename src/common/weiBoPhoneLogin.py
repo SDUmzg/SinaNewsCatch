@@ -4,7 +4,7 @@ import requests
 
 class WeiBoPhoneLogin(object):
 
-    def login(self):
+    def login(self, user, pwd):
         login_url = "https://passport.weibo.cn/sso/login"
         headers={
             "Content-Type":"application/x-www-form-urlencoded",
@@ -12,9 +12,10 @@ class WeiBoPhoneLogin(object):
             "Referer": "https://passport.weibo.cn/signin/login",
             "User-Agent":"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
         }
+
         data = {
-            "username": "1666188122@qq.com",
-            "password": "mzg...8535933570",
+            "username": user,
+            "password": pwd,
             "savestate": 1,
             "r": "",
             "ec": 0,

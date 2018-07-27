@@ -1,10 +1,10 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-from src.common.weiboLogin import WeiBoLogin
+from src.common.weiBoPhoneLogin import WeiBoPhoneLogin
 from src.config import Config
 from src.common import utils
 import requests
-import time
+from bs4 import BeautifulSoup
 
 
 class SpiderM(object):
@@ -17,8 +17,8 @@ class SpiderM(object):
 
         user_name = Config.getUserName()
         pass_word = Config.getPwd()
-        weibo = WeiBoLogin()
-        cookies = weibo.login(user_name, pass_word)
+        weibo = WeiBoPhoneLogin()
+        cookies = weibo.login(user_name,pass_word)
         self.cookies = cookies
 
     @staticmethod
@@ -31,22 +31,24 @@ class SpiderM(object):
         return response.text
 
 
+
+
+
 if __name__ == "__main__":
     print("Test Start")
-    # user_name = Config.getUserName()
-    # pass_word = Config.getPwd()
-    base_url = Config.getUrl(0)
-    spider = Spider()
-    url1 = spider.get_page_url(base_url, 1)
+    base_url = Config.getUrl(1)
+    spider = SpiderM()
     url2 = spider.get_page_url(base_url, 2)
     headers = Config.get_header()
-    time.sleep(utils.get_random_second(1, 3))
-    print("url  -->  ", url1)
-    res1 = spider.get_page_content(url1, None, headers)
-    time.sleep(utils.get_random_second(1, 3))
     print("url  -->  ", url2)
     res2 = spider.get_page_content(url2, None, headers)
-    print(res1)
     print("********************")
-    print(res2)
+    soup = BeautifulSoup(res2, "lxml")
+    newsList = soup.find_all(id=True, class_='c')
+    print(newsList)
+    for item in newsList:
+        print(newsList.index(item))
+        print(item)
+
+
 
